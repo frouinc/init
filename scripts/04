@@ -1,0 +1,16 @@
+# add this file to /etc/cron.daily
+# set the permissions to 755
+# add 0 0 * * * /etc/cron.daily/04 to the crontab
+
+if [ -f ".store1" ]
+then
+    crontab -l | md5sum > .store2
+    if ! cmp -s ".store1" ".store2"
+    then
+    	echo "cron changed" | mail -s "cron changed" root
+    	rm .store1
+    	mv .store2 .store1
+    fi
+else
+    crontab -l | md5sum > .store1
+fi

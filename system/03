@@ -1,0 +1,1 @@
+echo "NEW_HOST_NAME" > /etc/hostname

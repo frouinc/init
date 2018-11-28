@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+sudo apt-get update > /var/log/update_script.log
+sudo apt-get upgrade >> /var/log/update_script.log
+
+# Add the script to the /etc/cron.weekly folder, set the permission to 755 for this script
+# Run crontab -e, then add the line 0 4 * * 1 /etc/cron.weekly/02
+# You can check if it was added without problem by running crontab -l
